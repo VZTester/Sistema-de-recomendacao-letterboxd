@@ -32,9 +32,15 @@ def buscar_catalogo_tmdb(api_key):
         if 'results' in resposta:
             for filme in resposta['results']:
                 generos_texto = [mapa_generos.get(g_id, "Desconhecido") for g_id in filme.get('genre_ids', [])]
+                # Pega a data de lançamento e recorta os 4 primeiros dígitos (o ano)
+                data_lancamento = filme.get('release_date', '')
+                ano_lancamento = data_lancamento[:4] if data_lancamento else "N/A"
+
+                generos_texto = [mapa_generos.get(g_id, "Desconhecido") for g_id in filme.get('genre_ids', [])]
                 filmes_catalogo.append({
                     'TMDB_Id': str(filme['id']),
                     'Titulo': filme['title'],
+                    'Ano': ano_lancamento, # <- Adicionamos o ano aqui!
                     'Generos_Texto': generos_texto
                 })
                 
@@ -80,7 +86,7 @@ if st.button("Gerar Recomendações"):
             if df_catalogo.empty:
                 st.error("Falha ao buscar o catálogo. Verifique sua chave da API.")
             else:
-                colunas_ignoradas = ['Titulo', 'Minha_Nota', 'TMDB_Id', 'Nota_Publico', 'Popularidade', 'Generos_Texto']
+                colunas_ignoradas = ['Titulo', 'Minha_Nota', 'Ano', 'TMDB_Id', 'Nota_Publico', 'Popularidade', 'Generos_Texto']
                 colunas_generos = [c for c in df_vistos.columns if c not in colunas_ignoradas]
                 
                 features = df_vistos[colunas_generos]
@@ -113,4 +119,4 @@ if st.button("Gerar Recomendações"):
                     url_imagem = buscar_poster(row.TMDB_Id, api_key_input)
                     with colunas_interface[index]:
                         st.image(url_imagem, use_container_width=True)
-                        st.markdown(f"**{row.Titulo}**")
+                        st.markdown(f"**{row.Titulo} ({row.Ano})**")
