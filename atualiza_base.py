@@ -4,7 +4,7 @@ import requests
 import os
 
 # 1. Configurações Iniciais
-api_key = "133a38d257bf8625b4ed339a01dd67af"
+api_key = "Insira_sua_api"
 arquivo_base = "filmes_prontos_modelo.csv"
 
 print("🔄 1. Lendo base atual...")
