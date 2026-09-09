@@ -80,7 +80,7 @@ if st.button("Gerar Recomendações"):
             if df_catalogo.empty:
                 st.error("Falha ao buscar o catálogo. Verifique sua chave da API.")
             else:
-                colunas_ignoradas = ['Titulo', 'Ano', 'Minha_Nota', 'TMDB_Id', 'Nota_Publico', 'Popularidade', 'Generos_Texto']
+                colunas_ignoradas = ['Titulo', 'Minha_Nota', 'TMDB_Id', 'Nota_Publico', 'Popularidade', 'Generos_Texto']
                 colunas_generos = [c for c in df_vistos.columns if c not in colunas_ignoradas]
                 
                 features = df_vistos[colunas_generos]
