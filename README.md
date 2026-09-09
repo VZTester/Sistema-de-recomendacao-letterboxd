@@ -24,11 +24,18 @@ O projeto foi desenhado com foco em automação e consistência de *Master Data*
 ## 🚀 Como Executar Localmente
 
 1. Clone o repositório:
+## 🚀 Como Executar Localmente
+
+1. Clone o repositório:
 ```bash
 git clone [https://github.com/VZTester/Sistema-de-recomendacao-letterboxd.git](https://github.com/VZTester/Sistema-de-recomendacao-letterboxd.git)
-1 Instale as dependências
+```
+1. Instale as dependências
+```bash
 pip install -r requirements.txt
-1 Execute a aplicação na máquina
+```
+2.Execute a aplicação na sua máquina
+```bash
 streamlit run app_recomendacao.py
 ```
-(Nota: É necessário possuir uma chave gratuita da API do TMDB)
+(Nota: É necessário possuir uma chave gratuita da API do TMDB).
