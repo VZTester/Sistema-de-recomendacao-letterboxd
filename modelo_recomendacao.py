@@ -3,7 +3,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import requests
 import numpy as np
 
-api_key = "133a38d257bf8625b4ed339a01dd67af"
+api_key = "Insira_sua_API"
 
 print("1. Carregando seu perfil de filmes assistidos...")
 df_assistidos = pd.read_csv("filmes_prontos_modelo.csv")
