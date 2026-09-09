@@ -2,7 +2,7 @@
 
 Um pipeline de dados *end-to-end* que extrai histórico de consumo de filmes (Letterboxd), enriquece metadados consumindo a API REST do The Movie Database (TMDB) e gera recomendações matemáticas personalizadas em uma interface web pública.
 
-🔗 **[Acesse a Aplicação ao Vivo Aqui](COLE_AQUI_O_SEU_LINK_DO_STREAMLIT)**
+🔗 **[Acesse a Aplicação ao Vivo Aqui](https://vzanonit-recomendador-filmes.streamlit.app/)**
 
 ## 🏗️ Arquitetura do Projeto (Pipeline ETL)
 
@@ -24,11 +24,13 @@ O projeto foi desenhado com foco em automação e consistência de *Master Data*
 ## 🚀 Como Executar Localmente
 
 1. Clone o repositório:
-```bash
-git clone [https://github.com/VZTester/Sistema-de-recomendacao-letterboxd.git](https://github.com/VZTester/Sistema-de-recomendacao-letterboxd.git)
+Instale as dependências:
+
+Bash
 pip install -r requirements.txt
+Execute a aplicação na sua máquina:
+
+Bash
 streamlit run app_recomendacao.py
-```
 (Nota: É necessário possuir uma chave gratuita da API do TMDB).
-```bash
 git clone [https://github.com/VZTester/Sistema-de-recomendacao-letterboxd.git](https://github.com/VZTester/Sistema-de-recomendacao-letterboxd.git)
