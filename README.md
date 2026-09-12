@@ -21,18 +21,13 @@ O projeto foi desenhado com foco em automação e consistência de *Master Data*
 1. **Inconsistência de Idiomas e Duplicidades:** O cruzamento da base original (títulos em inglês) com o catálogo da API (títulos traduzidos) gerava falhas no sistema de recomendação. A solução foi padronizar a taxonomia das requisições REST (`language=en-US`) e implementar um "filtro duplo" (cruzamento por Título e TMDB_Id tipado) para garantir a exclusão perfeita de filmes já assistidos.
 2. **Falhas de Coleta na API (Tratamento de Exceções):** Alguns filmes antigos não retornavam na busca exata por Título + Ano. Foi implementada uma lógica de *Fallback* inteligente: o script tenta a busca estrita; em caso de falha, relaxa os parâmetros iterativamente para garantir o enriquecimento do dado.
 
-##  Como Executar Localmente
+## Observação
+O processo é resumido por: 
+baixar os filmes da conta do letterboxd
+tratar e transformar os dados (vetorização)
+comparar com a api para enriquecer os dados
+utilizar da similaridade dos cossenos para recomendação
+passar isso para o streamlit
 
-1. Clone o repositório:
-```bash
-git clone [https://github.com/VZTester/Sistema-de-recomendacao-letterboxd.git](https://github.com/VZTester/Sistema-de-recomendacao-letterboxd.git)
-```
-1. Instale as dependências
-```bash
-pip install -r requirements.txt
-```
-2.Execute a aplicação na sua máquina
-```bash
-streamlit run app_recomendacao.py
 ```
 (Nota: É necessário possuir uma chave gratuita da API do TMDB).
