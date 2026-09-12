@@ -28,6 +28,3 @@ O projeto foi desenhado com foco em automação e consistência de *Master Data*
 * 3 Comparar com a API para enriquecer os dados
 * 4 Utilizar da similaridade dos cossenos para recomendação
 * 5 Passar isso para o streamlit
-
-```
-(Nota: É necessário possuir uma chave gratuita da API do TMDB).
