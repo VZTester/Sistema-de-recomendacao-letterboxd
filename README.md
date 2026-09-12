@@ -22,12 +22,12 @@ O projeto foi desenhado com foco em automação e consistência de *Master Data*
 2. **Falhas de Coleta na API (Tratamento de Exceções):** Alguns filmes antigos não retornavam na busca exata por Título + Ano. Foi implementada uma lógica de *Fallback* inteligente: o script tenta a busca estrita; em caso de falha, relaxa os parâmetros iterativamente para garantir o enriquecimento do dado.
 
 ## Observação
-O processo é resumido por: 
-baixar os filmes da conta do letterboxd
-tratar e transformar os dados (vetorização)
-comparar com a api para enriquecer os dados
-utilizar da similaridade dos cossenos para recomendação
-passar isso para o streamlit
+O processo é resumido por:
+*1 Baixar os filmes da conta do letterboxd
+*2 Tratar e transformar os dados (vetorização)
+*3 Comparar com a API para enriquecer os dados
+*4 Utilizar da similaridade dos cossenos para recomendação
+*5 Passar isso para o streamlit
 
 ```
 (Nota: É necessário possuir uma chave gratuita da API do TMDB).
