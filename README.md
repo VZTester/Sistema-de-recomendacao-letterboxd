@@ -11,7 +11,7 @@ O projeto foi desenhado com foco em automação e consistência de *Master Data*
 *   **Transform:** Tratamento de dados nulos, conversão estrita de tipagem (chaves primárias), tratamento de strings e aplicação de *One-Hot Encoding* para transformar variáveis categóricas (gêneros) em matrizes binárias.
 *   **Load / Serve:** Disponibilização da interface interativa via Streamlit Cloud. O algoritmo calcula a distância vetorial (*Cosine Similarity*) entre o perfil histórico do usuário e o catálogo dinâmico da API para sugerir os filmes com maior afinidade geométrica.
 
-## 🛠️ Stack Tecnológico
+##  Stack Tecnológico
 *   **Linguagem:** Python
 *   **Processamento e Modelagem:** Pandas, Scikit-Learn
 *   **Integração e Orquestração:** Requests, Feedparser
@@ -21,9 +21,6 @@ O projeto foi desenhado com foco em automação e consistência de *Master Data*
 1. **Inconsistência de Idiomas e Duplicidades:** O cruzamento da base original (títulos em inglês) com o catálogo da API (títulos traduzidos) gerava falhas no sistema de recomendação. A solução foi padronizar a taxonomia das requisições REST (`language=en-US`) e implementar um "filtro duplo" (cruzamento por Título e TMDB_Id tipado) para garantir a exclusão perfeita de filmes já assistidos.
 2. **Falhas de Coleta na API (Tratamento de Exceções):** Alguns filmes antigos não retornavam na busca exata por Título + Ano. Foi implementada uma lógica de *Fallback* inteligente: o script tenta a busca estrita; em caso de falha, relaxa os parâmetros iterativamente para garantir o enriquecimento do dado.
 
-##  Como Executar Localmente
-
-1. Clone o repositório:
 ##  Como Executar Localmente
 
 1. Clone o repositório:
