@@ -21,10 +21,26 @@ O projeto foi desenhado com foco em automação e consistência de *Master Data*
 1. **Inconsistência de Idiomas e Duplicidades:** O cruzamento da base original (títulos em inglês) com o catálogo da API (títulos traduzidos) gerava falhas no sistema de recomendação. A solução foi padronizar a taxonomia das requisições REST (`language=en-US`) e implementar um "filtro duplo" (cruzamento por Título e TMDB_Id tipado) para garantir a exclusão perfeita de filmes já assistidos.
 2. **Falhas de Coleta na API (Tratamento de Exceções):** Alguns filmes antigos não retornavam na busca exata por Título + Ano. Foi implementada uma lógica de *Fallback* inteligente: o script tenta a busca estrita; em caso de falha, relaxa os parâmetros iterativamente para garantir o enriquecimento do dado.
 
-## Observação
-* O processo é resumido por:
-* 1 Baixar os filmes da conta do letterboxd
-* 2 Tratar e transformar os dados (vetorização)
-* 3 Comparar com a API para enriquecer os dados
-* 4 Utilizar da similaridade dos cossenos para recomendação
-* 5 Passar isso para o streamlit
+Como Gerar Recomendações Para o Seu Próprio Perfil
+Por padrão, a interface web pública e o arquivo de dados deste repositório refletem o histórico de consumo da autora. Se você clonou este projeto e deseja gerar recomendações baseadas no seu próprio perfil do Letterboxd, você precisará atualizar a base de dados.
+
+Siga os passos abaixo:
+
+1. Zere a base de dados histórica:
+Abra o arquivo filmes_prontos_modelo.csv, apague todas as linhas de dados dos filmes e mantenha apenas a primeira linha (o cabeçalho com os nomes das colunas).
+
+2. Aponte para o seu perfil:
+No arquivo atualiza_base.py, procure a linha que contém a URL do RSS e troque o nome de usuário pelo seu. Ficará assim:
+url_rss = "https://letterboxd.com/SEU_USUARIO/rss/"
+
+3. Configure sua credencial da API:
+Ainda no arquivo atualiza_base.py, procure a variável api_key e coloque a sua chave do TMDB:
+api_key = "SUA_API_KEY"
+
+4. Atualize os dados (Pipeline ETL):
+No terminal da sua máquina, digite o seguinte comando e aperte Enter:
+python atualiza_base.py
+
+5. Inicie o sistema:
+Com a nova base de dados criada na sua máquina, inicie a interface digitando no terminal:
+streamlit run app_recomendacao.py
